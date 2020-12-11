@@ -12,8 +12,9 @@ videoArea(10, 10, 640, 480),
 videoPlayerObject(videoPlayerObject),
 ir_parentStr(str)
 {
-   setWantsKeyboardFocus(true);
-
+    setWantsKeyboardFocus(true);
+    //addKeyListener(this);
+    
     initialize();
     
     // setup delegate

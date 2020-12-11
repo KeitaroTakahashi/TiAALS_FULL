@@ -163,7 +163,6 @@ void IRNodeObjectSelector::selectAllObjects()
 
 void IRNodeObjectSelector::deselectAllObjects()
 {
-    std::cout << "deselectAllObjects\n";
     this->selectedObjectList.clear();
     for (auto obj : *this->objectList)
     {
@@ -175,7 +174,6 @@ void IRNodeObjectSelector::deselectAllObjects()
 void IRNodeObjectSelector::deselectOtherObejcts(IRNodeObject* selectedObj)
 {
     
-    std::cout << "deselectOtherObejcts\n";
 
     this->selectedObjectList.clear();
     for (auto obj : *this->objectList)
@@ -195,26 +193,19 @@ void IRNodeObjectSelector::deselectOtherObejcts(IRNodeObject* selectedObj)
 
 void IRNodeObjectSelector::addSelectedObjects()
 {
-    std::cout << "addSelectedObjects\n";
     this->selectedObjectList.clear();
     for (auto obj : *this->objectList)
     {
         if (obj->isSelected())
         {
             this->selectedObjectList.add(obj);
-            
-            std::cout << obj << " : " << obj->name << " added\n";
-
         }
     }
-    
-    std::cout << "added obj num = " << this->selectedObjectList.size() << std::endl;
 }
 
 
 bool IRNodeObjectSelector::removeSelectedObject(IRNodeObject* removeObj)
 {
-    std::cout <<"removeSelectedObject\n";
     int index = this->selectedObjectList.indexOf(removeObj);
     if (index >= 0)
     {

@@ -11,9 +11,8 @@
 bool IRWorkspaceComponent::keyPressed (const KeyPress& key, Component* originatingComponent)
 {
     // for some reason, the workspace bihind the topworkspace doesnt give up receiving keyboard event...
-    if(!isTopWorkspace()) return true;
     
-    std::cout << "IRWorkspaceComponent " << this << " : keyPressed() of " << this->name << " : " << key.getKeyCode() << " : " << key.getTextDescription() << ", " << key.getTextCharacter() <<   std::endl;
+    std::cout << "IRWorkspaceComponent " << this << " of " << getIndex() << " : keyPressed() of " << this->name << " : " << key.getKeyCode() << " : " << key.getTextDescription() << ", " << key.getTextCharacter() <<   std::endl;
     
   // delete key
     if(key.getKeyCode() == key.deleteKey || key.getKeyCode() == key.backspaceKey)

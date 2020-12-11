@@ -339,7 +339,7 @@ void IRVideoPlayerObject2::stop()
 void IRVideoPlayerObject2::setPlayPosition(double newPositionInSec)
 {
     
-    std::cout << " IRVideoPlayerObject2::setPlayPosition = " << newPositionInSec << std::endl;
+    //std::cout << " IRVideoPlayerObject2::setPlayPosition = " << newPositionInSec << std::endl;
     this->videoPlayer->setPlayPosition(newPositionInSec);
     
     // inform the new play position to its child classes.

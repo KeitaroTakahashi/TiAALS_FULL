@@ -24,15 +24,7 @@ index(index)
     setOpaque(false);
     
     setWantsKeyboardFocus(true);
-    //addKeyListener(this);
-    if(this->ir_str != nullptr)
-    {
-        
-        // needs to be controlled from outside of this class!
-        //addKeyListener(this->irt_str->key);
-        //addMouseListener(this->ir_str->mouse, false);
-    }
-    
+
     createCover();
     
     //give object lists to selector

@@ -33,32 +33,14 @@ IRHeavyWeightComponent(this, "IRLeftBar")
     this->objectMenuComponent->addMouseListener(this, true);
     this->objectMenuComponent->addChangeListener(this);
     addAndMakeVisible(this->objectMenuComponent.get());
-
-    /*
-    // SLIDE MENU
-    this->slideMenuComponent.reset(new LeftBarSlideMenu(str));
-    this->slideMenuComponent->workspaceSelectedCallback = [this](IRWorkspace* space) { workspaceSelectedAction(space); };
-    
-    this->slideMenuComponent->addMouseListener(this, true);
-    this->slideMenuComponent->addChangeListener(this);
-     */
-    
     addButtons();
     
-    /*
-    this->objectSlideSwitchButton.reset( new ObjectSlideSwitchSpace(str,
-                                                                    this->buttonSize) );
-    addAndMakeVisible(this->objectSlideSwitchButton.get());
-    this->objectSlideSwitchButton->toNavigatorButtonClicked = [this] { toNavigatorAction(); };
-    this->objectSlideSwitchButton->toObjectMenuButtonClicked = [this] { toObjectMenuAction(); };
-*/
     this->ordinaryWidth = this->leftMarge + this->rightMarge + this->buttonSize;
     this->maxWidth = this->leftMarge + this->rightMarge + this->buttonSize + this->menuSpace;
     
     //key
     setWantsKeyboardFocus(true);
     addKeyListener(this);
-    //addKeyListener(getStr()->key);
 
     //OpenGL
     this->openGLContext.setContinuousRepainting(false);
@@ -68,8 +50,6 @@ IRHeavyWeightComponent(this, "IRLeftBar")
 IRLeftBar::~IRLeftBar()
 {
     this->objectMenuComponent.reset();
-    //this->slideMenuComponent.reset();
-    //this->objectSlideSwitchButton.reset();
     this->openGLContext.detach();
 }
 
@@ -79,23 +59,9 @@ void IRLeftBar::resized()
 {
     int s = this->buttonSize;
     int y = 0; //this->topMarge;
-    //this->toNavigatorButton.setBounds(this->leftMarge, y, s, s);
-    //this->toObjectMenuButton.setBounds(this->leftMarge, y, s, s);
-    
-    //this->objectSlideSwitchButton->setBounds(0, 0, getWidth(), s + this->yMarge * 2);
-    
-    //y += s + (this->yMarge * 2);
-    
     this->objectMenuComponent->setBounds(0, y,
                                          this->ordinaryWidth,
                                          getHeight() - y);
-    
-    /*
-    this->slideMenuComponent->setBounds(0, y,
-                                        this->ordinaryWidth,
-                                        getHeight() - y);
-     */
-    
    
 }
 
@@ -158,7 +124,6 @@ void IRLeftBar::checkResizableFromMouseDownPosition(juce::Point<int> pos)
 //==================================================
 void IRLeftBar::bringToFrontCompleted()
 {
-    //this->objectSlideSwitchButton->bringThisToFront("objectSlideSwitchButton");
     this->objectMenuComponent->bringToFrontCompleted();
     
     setWantsKeyboardFocus(true);

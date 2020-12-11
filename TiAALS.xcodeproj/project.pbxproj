@@ -958,6 +958,7 @@
 			children = (
 				82AE7424258241C1009C4703 /* VideoAnnotaterWorkspace */,
 				82AE7427258241C1009C4703 /* IRVideoAnnotater.cpp */,
+				82AE744B258241C1009C4703 /* IRVideoAnnotater.hpp */,
 				82AE7428258241C1009C4703 /* VideoAnnotationEventComponent */,
 				82AE7434258241C1009C4703 /* IRVideoAnnotaterWindow.h */,
 				82AE7435258241C1009C4703 /* IRVideoAnnotaterSRTFile */,
@@ -967,7 +968,6 @@
 				82AE7445258241C1009C4703 /* VideoEventListComponent */,
 				82AE7448258241C1009C4703 /* IRVideoAnnotaterObjectManagement.cpp */,
 				82AE7449258241C1009C4703 /* VAControllerComponent */,
-				82AE744B258241C1009C4703 /* IRVideoAnnotater.hpp */,
 				82AE744C258241C2009C4703 /* EventLog */,
 				82AE744F258241C2009C4703 /* VideoAnnotationMenu */,
 			);
