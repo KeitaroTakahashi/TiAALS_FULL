@@ -31,7 +31,7 @@ void SlideMenu::resized()
         item->setBounds(x, y + this->yMargin, getWidth() - x, this->itemHeight);
         y += this->itemHeight + this->yMargin;
         
-        std::cout << "slide resizing... " << item->getIndex() << " : " << item->getWorkspace()->getIndex() << std::endl;
+        //std::cout << "slide resizing... " << item->getIndex() << " : " << item->getWorkspace()->getIndex() << std::endl;
     }
 }
 
@@ -118,7 +118,7 @@ void SlideMenu::addNewWorkspaceSlide(IRWorkspace* space)
 {
     std::cout << "SlideMenu::addNewWorkspaceSlide : " << space << std::endl;
     addSlide(space);
-    //updateSpace();
+    updateSpace();
 }
 
 // ==================================================

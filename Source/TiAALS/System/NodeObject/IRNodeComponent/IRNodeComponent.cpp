@@ -85,7 +85,12 @@ void IRNodeComponent::resized()
 
 void IRNodeComponent::moved()
 {
-    resizedOrMoved();
+    
+    onMoved();
+    
+    //resizedOrMoved();
+    
+    setBoundsGoBackToEncloseButton();
     
     onResized();
 }

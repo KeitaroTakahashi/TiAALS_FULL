@@ -80,12 +80,12 @@ IRObjectFactory2::IRObjectFactory2()
                                        objectCategory::TEXTMENU,
                                        img);
     
-  
+/*
     registerObject<IRQuillTextEditorObject>("IRQuillTextEditor",
                                        "Quill Text Editor",
                                        objectCategory::TEXTMENU,
-                                       img);
-    
+                                       img);*/
+/*
     registerObject<IRGoogleMapObject>("IRGoogleMap",
                                             "Google Map",
                                             objectCategory::OBJECTMENU,
@@ -95,18 +95,18 @@ IRObjectFactory2::IRObjectFactory2()
                                     "Youtube",
                                     objectCategory::OBJECTMENU,
                                     img);
+ */
         
     registerObject<IRShapeObject>("IRShape",
                                   "Shape",
                                   objectCategory::IMAGEMENU,
                                   img); // leak videocomp
-    std::cout << "IRFactory2 initialized\n";
 }
 
 
 IRNodeObject* IRObjectFactory2::createObject(std::string id, Component* parent, IRStr* str)
 {
-    std::cout << "IRObjectFactory2::createObject : " << id << std::endl;
+    //std::cout << "IRObjectFactory2::createObject : " << id << std::endl;
     
     if(this->list.find(id) == this->list.end())
     {

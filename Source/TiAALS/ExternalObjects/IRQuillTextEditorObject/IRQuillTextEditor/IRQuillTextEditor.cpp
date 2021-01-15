@@ -26,6 +26,8 @@ IRUIFoundation(parent, str)
     std::cout << "IRQuillTextEditor : " << this->url << std::endl;
 
     this->browser.getBrowser()->goToURL(this->url);
+    
+    
 }
 
 IRQuillTextEditor::~IRQuillTextEditor()

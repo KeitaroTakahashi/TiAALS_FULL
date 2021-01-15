@@ -2,8 +2,6 @@
 #include "IRWaveformObject.hpp"
 
 
-
-
 IRWaveformObject::IRWaveformObject(Component* parent, IRStr* str) :
 IRNodeObject(parent, "IRWaveform", str, NodeObjectType(ordinaryIRComponent))
 {

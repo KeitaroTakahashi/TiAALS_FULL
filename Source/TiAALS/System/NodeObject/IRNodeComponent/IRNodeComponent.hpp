@@ -145,6 +145,7 @@ protected:
     virtual void resizedOrMoved() {};
 public:
     virtual void onResized() {};
+    virtual void onMoved() {};
 public:
     void setObjectCentredPosition(int x, int y);
     void setObjectBounds(Rectangle<int> bounds);

@@ -12,22 +12,18 @@ void IRNSViewManager::bringOpenGLContextFront(juce::Component* owner, NSViewComp
 {
     auto* peer = owner->getPeer();
     auto v = (NSView*) view->getView();
+    
 
     if(v == nullptr) return;
     
     if(peer != nullptr)
     {
-       
         auto peerView = (NSView*) peer->getNativeHandle();
        
-        
         [v retain];
         [v removeFromSuperview];
         [peerView addSubview: v];
         [v release];
-        
-
-       
     }
    
     [v setHidden: ! owner->isShowing()];

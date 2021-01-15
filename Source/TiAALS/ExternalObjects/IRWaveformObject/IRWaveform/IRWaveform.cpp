@@ -128,7 +128,7 @@ void IRWaveform::getFilePtr(File file)
     getFileManager().getFilePtrWithCallBack(IRFileType::IRAUDIO,
                                              file,
                                              this->parent,
-                                            this->randomIDForPtr,
+                                             this->randomIDForPtr,
                                              callback);
     
 

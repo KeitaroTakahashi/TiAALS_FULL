@@ -50,9 +50,6 @@ public:
         
         NSViewComponent* view = static_cast<NSViewComponent*>(this->browser->getPimpl());
         if(view == nullptr) return;
-        
-        
-        
         IRNSViewManager manager;
         manager.bringOpenGLContextFront(this, view);
         
@@ -87,7 +84,7 @@ private:
         this->browser.reset( new WebBrowserComponent() );
         addAndMakeVisible(this->browser.get());
         
-        this->browser->setInterceptsMouseClicks(false, false);
+        this->browser->setInterceptsMouseClicks(true, true);
 
     }
     

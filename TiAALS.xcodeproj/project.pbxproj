@@ -132,8 +132,6 @@
 		82AE7798258241C9009C4703 /* IRStartWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE76E1258241C6009C4703 /* IRStartWindow.cpp */; };
 		82AE7799258241C9009C4703 /* IRStrComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE76E6258241C6009C4703 /* IRStrComponent.cpp */; };
 		82AE779A258241C9009C4703 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE76E8258241C6009C4703 /* Main.cpp */; };
-		82AE779C2582430A009C4703 /* libIRModule605.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AE779B2582430A009C4703 /* libIRModule605.a */; };
-		82AE779D25824317009C4703 /* libIRModule605.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82AE779B2582430A009C4703 /* libIRModule605.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		82AE7882258243F2009C4703 /* IRTextEditorObjectPreference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE77A2258243F0009C4703 /* IRTextEditorObjectPreference.cpp */; };
 		82AE7883258243F2009C4703 /* IRTextEditorController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE77A5258243F0009C4703 /* IRTextEditorController.cpp */; };
 		82AE7884258243F2009C4703 /* IRTextEditorAnnotaterObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE77A9258243F0009C4703 /* IRTextEditorAnnotaterObject.cpp */; };
@@ -196,6 +194,7 @@
 		82AE78BD258243F2009C4703 /* IR3DGraphicUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE7878258243F1009C4703 /* IR3DGraphicUI.cpp */; };
 		82AE78BE258243F2009C4703 /* IR3DGraphicUIWithPreference.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE787B258243F1009C4703 /* IR3DGraphicUIWithPreference.cpp */; };
 		82AE78BF258243F2009C4703 /* OpenGLVertexNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE7880258243F1009C4703 /* OpenGLVertexNoise.cpp */; };
+		82D7EEE725B18B9300CD9E7A /* libIRModule605.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D7EEE625B18B9300CD9E7A /* libIRModule605.a */; };
 		8A6903BC0A2055E553B8B67D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BD453EA122CEA19BC9145F /* QuartzCore.framework */; };
 		8E3A8A0B45A77D2CBDC84BCF /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF266B2B7B179F1EA6ED94D /* CoreAudio.framework */; };
 		A26E7C49873CD7585F26666B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA1F08040B3D36C0C4AEC99 /* Carbon.framework */; };
@@ -214,7 +213,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				82AE779D25824317009C4703 /* libIRModule605.a in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +546,6 @@
 		82AE76E6258241C6009C4703 /* IRStrComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IRStrComponent.cpp; sourceTree = "<group>"; };
 		82AE76E7258241C6009C4703 /* IRStrComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IRStrComponent.hpp; sourceTree = "<group>"; };
 		82AE76E8258241C6009C4703 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
-		82AE779B2582430A009C4703 /* libIRModule605.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIRModule605.a; path = lib/libIRModule605.a; sourceTree = "<group>"; };
 		82AE77A1258243F0009C4703 /* IRTextEditorObjectPreference.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IRTextEditorObjectPreference.hpp; sourceTree = "<group>"; };
 		82AE77A2258243F0009C4703 /* IRTextEditorObjectPreference.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IRTextEditorObjectPreference.cpp; sourceTree = "<group>"; };
 		82AE77A4258243F0009C4703 /* IRTextEditorController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IRTextEditorController.hpp; sourceTree = "<group>"; };
@@ -707,6 +704,7 @@
 		82AE7880258243F1009C4703 /* OpenGLVertexNoise.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLVertexNoise.cpp; sourceTree = "<group>"; };
 		82AE7881258243F1009C4703 /* OpenGLVertexNoise.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLVertexNoise.hpp; sourceTree = "<group>"; };
 		82C22F7A2C5AACEDF14CBF0D /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
+		82D7EEE625B18B9300CD9E7A /* libIRModule605.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIRModule605.a; path = lib/libIRModule605.a; sourceTree = "<group>"; };
 		933D8FCB0E2584B2F0E25220 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		C596CE48C5E81C35933B935C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		D5074E1C3DF7DD430366F2E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -733,7 +731,7 @@
 				0DDD455F291DF6817E1EC870 /* CoreMIDI.framework in Frameworks */,
 				82AE7754258241C8009C4703 /* libfftw3.3.dylib in Frameworks */,
 				DB52D5AACFE8EB1983470EE1 /* DiscRecording.framework in Frameworks */,
-				82AE779C2582430A009C4703 /* libIRModule605.a in Frameworks */,
+				82D7EEE725B18B9300CD9E7A /* libIRModule605.a in Frameworks */,
 				0197B4E0FBEC441EFBCC9286 /* Foundation.framework in Frameworks */,
 				362F0AA8B6DA85D4D4E6F60D /* IOKit.framework in Frameworks */,
 				4DBF3C2D579B4E1C278FE873 /* OpenGL.framework in Frameworks */,
@@ -766,7 +764,7 @@
 		2CB0D8CA5435D359B506D7B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				82AE779B2582430A009C4703 /* libIRModule605.a */,
+				82D7EEE625B18B9300CD9E7A /* libIRModule605.a */,
 				5CB8579F6EA34B3E9F7A483F /* Accelerate.framework */,
 				D5074E1C3DF7DD430366F2E6 /* AudioToolbox.framework */,
 				4643532305A6CE9C617B343A /* AVFoundation.framework */,
@@ -3853,6 +3851,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_HEADER_SEARCH_PATHS = "../../JuceLibraryCode /Applications/JUCE/modules";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.TiAALS;
 				PRODUCT_NAME = TiAALS;
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Source\"/**";

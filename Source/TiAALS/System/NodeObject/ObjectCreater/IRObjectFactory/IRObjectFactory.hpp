@@ -76,26 +76,5 @@ private:
     
 };
 
-/*
-// template function should be written outside of the class - FD could not put this in .cpp - to investigate further once global file separation done
-template<class T>
-void IRObjectFactory::registerObject(std::string id, std::string name, objectCategory objectType, Image img)
-{
-    
-    // now trying with shared pointer
-    
-    std::cout<< id << " registering : size is " << this->list.size() << std::endl;
-
-    
-    std::shared_ptr<IRObjectCreater<T>> obj = std::make_shared<IRObjectCreater<T>>();
-    // IRObjectCreater<T>* obj = new IRObjectCreater<T>();
-    // std::cout << "hallo" << std::endl;
-    this->list[id] = IRObjectFactory::t_object(id, name, objectType, img, obj);
-    
-    this->registeredObjectInfo[objectType].push_back(&this->list[id]);
-    
-    std::cout<< id << " registered : size is " << this->list.size() << std::endl;
-    
-}*/
 
 #endif /* IRObjectFactory_hpp */
