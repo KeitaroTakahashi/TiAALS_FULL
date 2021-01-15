@@ -8,7 +8,8 @@
 #ifndef IRProjectOwnerBase_h
 #define IRProjectOwnerBase_h
 
-class IRProjectOwnerBase : public AudioAppComponent
+class IRProjectOwnerBase : public Component,
+public AudioSource
 {
     
 public:

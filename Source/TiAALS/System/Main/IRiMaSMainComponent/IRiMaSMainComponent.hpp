@@ -32,7 +32,7 @@ IRMAIN class operates;
 
  */
 
-
+// AudioAppComponent
 
 class IRiMaSMainComponent : public Component,
                             public ChangeListener,

@@ -21,7 +21,8 @@
 #include "KTextLoader.h"
 #include "IRWorkspaceCover.hpp"
 
-class IRWorkspaceComponent : public AudioAppComponent,
+class IRWorkspaceComponent : public Component,
+public AudioSource,
 public IRComponents,
 public IRStrComponent,
 public ChangeBroadcaster,

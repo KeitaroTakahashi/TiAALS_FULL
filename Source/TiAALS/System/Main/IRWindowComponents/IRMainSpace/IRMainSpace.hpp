@@ -16,7 +16,8 @@
 #include "KeAnimationComponent.h"
 #include "IRWorkspaceListViewer.h"
 
-class IRMainSpace : public AudioAppComponent,
+class IRMainSpace : public Component,
+public AudioSource,
 public IRHeavyWeightComponent,
 public ChangeBroadcaster,
 public ChangeListener,
