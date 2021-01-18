@@ -35,9 +35,7 @@ void main()
     
     vec3 p_s = (positiveStretch - 1.0) * stretch_amount;
     vec3 n_s = (negativeStretch - 1.0) * stretch_amount;
-    
- 
-    
+
     vec4 s_x = (stretchX - 1.0) * stretch_amount;
     vec4 s_y = (stretchY - 1.0) * stretch_amount;
 
@@ -88,8 +86,6 @@ void main()
     {
         transformed.z = vertex.z * (1.0 + p_s.z);
     }
-
-
 
     gl_Position = projectionMatrix * viewMatrix * vec4(transformed, 1.0);
 

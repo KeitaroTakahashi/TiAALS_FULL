@@ -13,22 +13,27 @@
 #include "IRFFT.h"
 #include "IRSignalWindowLib.h"
 
-class IRFFTSequence : public IRFFT
+class IRFFTSequence
 {
     // ============================================================
 public:
-    IRFFTSequence(int fftsize, int hopsize, IRWindow::TYPE windowType) : IRFFT(fftsize),
+    IRFFTSequence(int fftsize, int hopsize, IRWindow::TYPE windowType) :
     fftsize(fftsize),
+    ffthalfsize(fftsize/2),
     hopsize(hopsize),
+    fft(fftsize),
+    complexData(fftsize),
     windowType(windowType),
     windowLib(fftsize, windowType)
     {
     }
     
     IRFFTSequence() :
-    IRFFT(1024),
     fftsize(1024),
+    ffthalfsize(512),
     hopsize(512),
+    fft(1024),
+    complexData(fftsize),
     windowType(IRWindow::TYPE::HANNING),
     windowLib(fftsize, windowType)
     {
@@ -55,8 +60,6 @@ public:
         // store current frame
         float* frame = new float [this->fftsize];
         
-        this->complexResult.clear();
-        fftForwardSetup();
         
         // calc a number of frames
         while(1)
@@ -78,15 +81,18 @@ public:
                                             frame,
                                             this->fftsize);
             
-            setSamples(frame, this->fftsize);
-            fftExecute();
-            // cartopol
-            fftw_complex* c = getComplexResult();
+  
+            
+            this->fft.FFT(frame, this->complexData.data());
+            
+            
             unsigned long yIndex = i * this->ffthalfsize;
+            
+            auto c = this->complexData.data();
             for(j=0;j<this->ffthalfsize;j++)
             {
-                this->power[yIndex + j] = sqrt(c[j][0] * c[j][0] +
-                                               c[j][1] * c[j][1]);
+                this->power[yIndex + j] = sqrt(c[j].real() * c[j].real() +
+                                               c[j].imag() * c[j].imag());
                 
             }
             currentIndex += hop;
@@ -96,15 +102,14 @@ public:
         
         std::cout << "FFT analysis result numFrame = " << this->nframe << std::endl;
         
-        destroySetup();
+        //destroySetup();
         this->hasFFTOperatedFlag = true;
         delete[] frame;
     }
     
     void IFFT()
     {
-        fftBackwardSetup();
-        destroySetup();
+       
     }
    
     
@@ -112,7 +117,7 @@ public:
     
     // ------------------------------------------------------------
     unsigned long getNumFrame() const { return this->nframe; }
-    std::vector<fftw_complex*> getComplexResultList() { return this->complexResult; }
+    std::vector<dsp::Complex<float>> getComplexResultList() { return this->complexData; }
     std::vector<float> getPower() const { return this->power; }
     std::vector<float> getMaxPower() const { return this->maxPower; }
     
@@ -159,13 +164,17 @@ private:
     }
     */
     int fftsize;
+    int ffthalfsize;
     int hopsize;
     unsigned long nframe = 0;
+    
+    IRFFT fft;
     
     float* data;
     unsigned long len = 0;
     std::vector<std::vector<float>> frameData;
-    std::vector<fftw_complex*> complexResult;
+    std::vector<dsp::Complex<float>> complexData;
+
     std::vector<float> power;
     std::vector<float> maxPower;
     std::vector<float> phase;

@@ -487,13 +487,13 @@ void IRWindowComponent::releaseResources()
 // AudioAppComponent
 void IRWindowComponent::audioSetup()
 {
-    setAudioChannels(0, 2);
+    //setAudioChannels(0, 2);
 }
 
 
 void IRWindowComponent::closeAudioSetup()
 {
-    shutdownAudio();
+    //shutdownAudio();
 }
 
 // ==================================================

@@ -8,104 +8,76 @@
 #ifndef IRFFT_h
 #define IRFFT_h
 
-#include "fftw3.h"
+#include "JuceHeader.h"
+
+using namespace juce;
 
 class IRFFT
 {
 public:
-    IRFFT(int fftsize)
-    : fftsize(fftsize)
+    
+    IRFFT(int fftsize) :
+    fftsize(fftsize),
+    ffthalfsize(fftsize/2),
+    fft(log2(fftsize))
     {
-        this->ffthalfsize = this->fftsize/2;
-        allocateMemory();
-    }
-    // ------------------------------------------------------------
-    ~IRFFT()
-    {
-        freeMemory();
-    }
-    // ------------------------------------------------------------
-    void setFFTSize(int fftsize)
-    {
-        freeMemory();
-        this->fftsize = fftsize;
-        allocateMemory();
-    }
-    // ------------------------------------------------------------
-    void fftForwardSetup()
-    {
-        this->p = fftw_plan_dft_1d(this->fftsize, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
-    }
-    // ------------------------------------------------------------
-    void fftBackwardSetup()
-    {
-        this->p = fftw_plan_dft_1d(this->fftsize, in, out, FFTW_BACKWARD, FFTW_ESTIMATE);
-    }
-    // ------------------------------------------------------------
-    void destroySetup()
-    {
-        fftw_destroy_plan(p);
-    }
-    // ------------------------------------------------------------
-    void fftExecute()
-    {
-        fftw_execute(this->p);
-    }
-    // ------------------------------------------------------------
-    /*
-    void setSamples(float* buffer, int begin, int length = -1)
-    {
-        if(length == -1) length = this->fftsize;
-        else if(length < 0) return;
         
-        for(int i=0;i<length;i++){
-            in[i][0] = buffer[begin + i];
-            in[i][1] = 0;
-        }
-    }*/
+    }
+    ~IRFFT() {}
     
-    void setSamples(float* buffer, int length)
-    {
-        for(int i=0;i<length;i++)
-        {
-            in[i][0] = buffer[i];
-            in[i][1] = 0;
-        }
-    }
-    // ------------------------------------------------------------
-    fftw_complex* getComplexResult() { return this->out; }
     
-    fftw_complex* copyComplexData(fftw_complex* src)
+    void FFT(dsp::Complex<float>* input, dsp::Complex<float>* output, bool direction)
     {
-        fftw_complex* dst = (fftw_complex* ) fftw_malloc(sizeof(fftw_complex)*this->fftsize);
-        memcpy(dst, src, sizeof(fftw_complex*)*this->fftsize);
-        return dst;
+        this->fft.perform (input, output, direction);
     }
-    // ------------------------------------------------------------
-    int getFFTSize() const { return this->fftsize; }
-private:
-    // ------------------------------------------------------------
-    void allocateMemory()
+    
+    void FFT(const float* input, dsp::Complex<float>* output)
     {
-        this->in = (fftw_complex* ) fftw_malloc(sizeof(fftw_complex)*this->fftsize);
-        this->out = (fftw_complex* ) fftw_malloc(sizeof(fftw_complex)*this->fftsize);
+        std::vector<dsp::Complex<float>>buf(this->fftsize);
+        for(int i = 0; i < this->fftsize; i ++) buf[i] = std::complex<float>( input[i], 0.0f );
+        this->fft.perform(buf.data(), output, false);
+        
+        //for(int i = 0; i < 10; i ++) std::cout << "input = " << input[i] << " : buf = " << buf[i].real() << " : fft r = " << output[i].real() << ", i = " << output[i].imag() << std::endl;
     }
-    // ------------------------------------------------------------
+    
+    void iFFT(dsp::Complex<float>*input, float* output)
+    {
+        HeapBlock<dsp::Complex<float>> buf(this->fftsize);
 
-    void freeMemory()
+        this->fft.perform(input, buf, true);
+        
+        for(int i = 0; i < this->fftsize; i ++) output[i] = buf[i].real();
+
+    }
+
+    void iFFT(float* real, float* imag, dsp::Complex<float>* output)
     {
-        fftw_free(this->in);
-        fftw_free(this->out);
+        HeapBlock<dsp::Complex<float>> buf(this->fftsize);
+        // insert real value only
+        for(int i = 0; i < this->fftsize; i ++) buf[i] = { real[i], imag[i] };
+
+        this->fft.perform(buf, output, true);
     }
     
-public:
-    int fftsize;
-    int ffthalfsize;
+    // ========================================
+    
+    static size_t ComplexSize(size_t size)
+    {
+        // vDSP size
+        return (size / 2) + 1;
+    }
+
+    
+    
+
+    
+    int fftsize = 0;
+    int ffthalfsize = 0;
     
 private:
-    fftw_complex *in, *out;
-    fftw_plan p;
-    int direction;
+    
+    dsp::FFT fft;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(IRFFT)
     
 };
 

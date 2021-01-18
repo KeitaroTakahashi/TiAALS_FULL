@@ -14,6 +14,7 @@
 		362F0AA8B6DA85D4D4E6F60D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C596CE48C5E81C35933B935C /* IOKit.framework */; };
 		3C901DD42BA6EF9128F064F0 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BC8A1A99A1319033B73324 /* AVKit.framework */; };
 		4DBF3C2D579B4E1C278FE873 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251250651789A025AEECCF88 /* OpenGL.framework */; };
+		828AE1DD25B5E4640064BB5B /* libIRModule605.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82D7EEE625B18B9300CD9E7A /* libIRModule605.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		82AE72EF25823918009C4703 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = 933D8FCB0E2584B2F0E25220 /* RecentFilesMenuTemplate.nib */; };
 		82AE74062582393C009C4703 /* materials in Resources */ = {isa = PBXBuildFile; fileRef = 82AE74052582393C009C4703 /* materials */; };
 		82AE76E9258241C6009C4703 /* IRVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE740B258241C1009C4703 /* IRVideo.cpp */; };
@@ -61,7 +62,6 @@
 		82AE7713258241C7009C4703 /* IRAudioReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE7503258241C3009C4703 /* IRAudioReader.cpp */; };
 		82AE7714258241C7009C4703 /* IRAudioDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE750D258241C3009C4703 /* IRAudioDescriptor.cpp */; };
 		82AE7715258241C7009C4703 /* IRAudioPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE7515258241C3009C4703 /* IRAudioPlayer.cpp */; };
-		82AE7754258241C8009C4703 /* libfftw3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AE75FE258241C4009C4703 /* libfftw3.3.dylib */; };
 		82AE7755258241C8009C4703 /* IRObjectController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE7602258241C5009C4703 /* IRObjectController.cpp */; };
 		82AE7756258241C8009C4703 /* IRUIFoundation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE760A258241C5009C4703 /* IRUIFoundation.cpp */; };
 		82AE7757258241C8009C4703 /* IRUIAudioFoundation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82AE760D258241C5009C4703 /* IRUIAudioFoundation.cpp */; };
@@ -213,6 +213,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				828AE1DD25B5E4640064BB5B /* libIRModule605.a in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +388,6 @@
 		82AE7509258241C3009C4703 /* IRSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSoundPlayer.h; sourceTree = "<group>"; };
 		82AE750C258241C3009C4703 /* IRAudioDescriptor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IRAudioDescriptor.hpp; sourceTree = "<group>"; };
 		82AE750D258241C3009C4703 /* IRAudioDescriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IRAudioDescriptor.cpp; sourceTree = "<group>"; };
-		82AE750F258241C3009C4703 /* fftw3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fftw3.h; sourceTree = "<group>"; };
 		82AE7510258241C3009C4703 /* IRSignalWindowLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRSignalWindowLib.h; sourceTree = "<group>"; };
 		82AE7511258241C3009C4703 /* IRFFTSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRFFTSequence.h; sourceTree = "<group>"; };
 		82AE7512258241C3009C4703 /* IRFFTAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRFFTAnalysis.h; sourceTree = "<group>"; };
@@ -729,7 +729,6 @@
 				FC1ED82F05078310BACAB8D2 /* CoreAudioKit.framework in Frameworks */,
 				ABD14166D6BD2215A9306330 /* CoreMedia.framework in Frameworks */,
 				0DDD455F291DF6817E1EC870 /* CoreMIDI.framework in Frameworks */,
-				82AE7754258241C8009C4703 /* libfftw3.3.dylib in Frameworks */,
 				DB52D5AACFE8EB1983470EE1 /* DiscRecording.framework in Frameworks */,
 				82D7EEE725B18B9300CD9E7A /* libIRModule605.a in Frameworks */,
 				0197B4E0FBEC441EFBCC9286 /* Foundation.framework in Frameworks */,
@@ -1818,7 +1817,6 @@
 		82AE750E258241C3009C4703 /* FFT */ = {
 			isa = PBXGroup;
 			children = (
-				82AE750F258241C3009C4703 /* fftw3.h */,
 				82AE7510258241C3009C4703 /* IRSignalWindowLib.h */,
 				82AE7511258241C3009C4703 /* IRFFTSequence.h */,
 				82AE7512258241C3009C4703 /* IRFFTAnalysis.h */,
