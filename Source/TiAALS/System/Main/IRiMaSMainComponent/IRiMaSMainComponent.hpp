@@ -16,7 +16,7 @@
 #include "ColourLib.h"
 
 /*
- IRiMaSMainComponent -----------------
+ IRiMaSMainComponent : AudioAppComponent
  |                  |
  IRStartWindow      IRProjectWindow2
  |                  |
@@ -34,7 +34,7 @@ IRMAIN class operates;
 
 // AudioAppComponent
 
-class IRiMaSMainComponent : public Component,
+class IRiMaSMainComponent : public AudioAppComponent,
                             public ChangeListener,
 public IRProjectWindow2::Listener
 {
@@ -56,7 +56,6 @@ public:
     
 private:
     // =======================================================
-/*
     //AudioAppComponent
     AudioEngine mixer;
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -65,11 +64,13 @@ private:
     
     // AudioAppComponent
     void audioSetup();
-    void closeAudioSetup();*/
+    void closeAudioSetup();
     // =======================================================
 
     void changeListenerCallback(ChangeBroadcaster* source) override;
     // =======================================================
+    
+    IRProjectWindow2* createProjectObject(String projectName = "project");
 
     // from IRProjectWindow2 Listener method
     void closeThisWindow(IRMainWindow* closeWindow) override;

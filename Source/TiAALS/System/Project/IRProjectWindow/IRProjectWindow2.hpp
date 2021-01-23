@@ -34,7 +34,7 @@ public:
     // ==================================================
 
     // AudioApp Component
-    AudioSource& getMixer() { return this->comp->getMixer(); }
+    AudioSource& getMixer() override { return this->comp->getMixer(); }
 
     // ==================================================
     

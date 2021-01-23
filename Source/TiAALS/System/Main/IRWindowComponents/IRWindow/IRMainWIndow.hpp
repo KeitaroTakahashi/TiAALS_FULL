@@ -31,6 +31,9 @@ public:
         
     }
     
+    virtual AudioSource& getMixer() = 0;
+
+    
     // ==================================================
     
     void paint(Graphics& g) override

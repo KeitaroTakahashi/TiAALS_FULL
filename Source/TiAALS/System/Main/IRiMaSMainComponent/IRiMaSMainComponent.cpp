@@ -26,12 +26,15 @@ IRiMaSMainComponent::~IRiMaSMainComponent()
 
     for (auto win : this->projectLib)
     {
+        this->mixer.removeSource(&win->getMixer());
         delete win;
     }
     
     this->projectLib.clear();
     
     singleton<IRObjectFactory2>::explicitlyDestroy();
+    
+    closeAudioSetup();
     
     // finalize singlton
     SingletonFinalizer::finalize();
@@ -45,7 +48,7 @@ void IRiMaSMainComponent::initialise()
     this->startWindow.reset(new IRStartWindow(applicationName, Rectangle<int>(640, 480)));
     this->startWindow->addChangeListener(this);
     
-    //audioSetup();
+    audioSetup();
 }
 
 
@@ -54,11 +57,9 @@ void IRiMaSMainComponent::createNewProject()
     std::cout << "Creating new project... projectWindow" << std::endl;
 
     int size = (int)this->projectLib.size();
-    Rectangle<int> frameRect (0,
-                              0,
-                              1280,
-                              800);
-    IRProjectWindow2* projectWindow2 = new IRProjectWindow2("project", frameRect);
+    
+    auto projectWindow2 = createProjectObject();
+    
     projectWindow2->setTopLeftPosition(10 * size, 10 * size);
     projectWindow2->addListener(this);
     std::function<void()> callback = [this] { createNewProject(); };
@@ -87,12 +88,7 @@ void IRiMaSMainComponent::createNewProjectFromSaveData(std::string path)
     // get project window bounds
     Rectangle<int>bounds = header.bounds;
     
-    Rectangle<int> frameRect (0,
-                              0,
-                              bounds.getWidth(),
-                              bounds.getHeight());
-    
-    IRProjectWindow2* projectWin = new IRProjectWindow2(header.projectName, frameRect);
+    IRProjectWindow2* projectWin = createProjectObject(header.projectName);
     
     // when loaded, the position of the proejct window is initialized to (0, 0)
     projectWin->setTopLeftPosition(0, 0);
@@ -157,8 +153,21 @@ void IRiMaSMainComponent::closeProject(DocumentWindow* closingWindow)
     }*/
 }
 
-
+// =======================================================
 // *** PRIVATE METHODS
+
+IRProjectWindow2* IRiMaSMainComponent::createProjectObject(String projectName)
+{
+    Rectangle<int> frameRect (0,
+                              0,
+                              1280,
+                              800);
+    
+    IRProjectWindow2* projectWin = new IRProjectWindow2(projectName, frameRect);
+    this->mixer.addAudioSource(&projectWin->getMixer());
+    return projectWin;
+}
+
 
 
 void IRiMaSMainComponent::changeListenerCallback (ChangeBroadcaster* source)
@@ -185,6 +194,8 @@ void IRiMaSMainComponent::closeThisWindow(IRMainWindow* closeWindow)
     auto it = std::find(this->projectLib.begin(), this->projectLib.end(), closeWindow);
     if (it != this->projectLib.end())
     {
+        //remove AudioSource
+        this->mixer.removeSource(&closeWindow->getMixer());
         
         this->projectLib.erase(it);
         delete closeWindow;
@@ -200,14 +211,13 @@ void IRiMaSMainComponent::closeThisWindow(IRMainWindow* closeWindow)
         this->startWindow->setVisible(true);
     }
     
-    std::cout << "closeThisWindow comp\n";
 }
 
 // ==================================================
 // SYSTEM
 // ==================================================
 // Audio
-/*
+
 void IRiMaSMainComponent::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
     this->mixer.getAudioSource().prepareToPlay(samplesPerBlockExpected, sampleRate);
@@ -235,5 +245,4 @@ void IRiMaSMainComponent::closeAudioSetup()
     shutdownAudio();
 }
 
-*/
 // ==================================================
